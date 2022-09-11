@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons>
+          <ion-back-button defaultHref="/login" color="primary">Volver</ion-back-button>
+          <ion-title color="primary">Registro OET Test</ion-title>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="save()">
+      <ion-list>
+          <ion-item>
+              <ion-label position="floating">Correo electrónico</ion-label>
+              <ion-input formControlName="email" type="email"></ion-input>
+              <ion-text *ngIf="this.form.get('email').dirty && this.form.get('email').invalid" color="danger">
+                  El correo no es válido
+              </ion-text>
+              <ion-text *ngIf="this.form.get('email').dirty && this.form.get('email').valid" color="success">
+                  Correcto
+              </ion-text>
+          </ion-item>
+          <ion-item>
+              <ion-label position="floating">Nombres</ion-label>
+              <ion-input formControlName="firstname"></ion-input>
+              <ion-text *ngIf="this.form.get('firstname').dirty && this.form.get('firstname').invalid" color="danger">
+                  Los nombres no son válidos
+              </ion-text>
+              <ion-text *ngIf="this.form.get('firstname').dirty && this.form.get('firstname').valid" color="success">
+                  Correcto
+              </ion-text>
+          </ion-item>
+          <ion-item>
+              <ion-label position="floating">Apellidos</ion-label>
+              <ion-input formControlName="lastname"></ion-input>
+              <ion-text *ngIf="this.form.get('lastname').dirty && this.form.get('lastname').invalid" color="danger">
+                  Los apellidos no son válidos
+              </ion-text>
+              <ion-text *ngIf="this.form.get('lastname').dirty && this.form.get('lastname').valid" color="success">
+                  Correcto
+              </ion-text>
+          </ion-item>
+            <ion-item>
+              <ion-label position="floating">Tipo de Documento</ion-label>
+              <ion-select interface="action-sheet" formControlName="identificationType" placeholder="Seleccione una Opción">
+                <ion-select-option value="cedula de ciudadanía">Cedula de Ciudadanía</ion-select-option>
+                <ion-select-option value="cedula de extranjería">Cedula de Extranjería</ion-select-option>
+                <ion-select-option value="pasaporte">Pasaporte</ion-select-option>
+              </ion-select>
+              <ion-text *ngIf="this.form.get('identificationType').dirty && this.form.get('identificationType').invalid" color="danger">
+                Por favor seleccione una opción válida
+            </ion-text>
+            <ion-text *ngIf="this.form.get('identificationType').dirty && this.form.get('identificationType').valid" color="success">
+                Correcto
+            </ion-text>
+          </ion-item>
+          <ion-item>
+              <ion-label position="floating">Número de Identificación</ion-label>
+              <ion-input formControlName="identification" type="number"></ion-input>
+              <ion-text *ngIf="this.form.get('identification').dirty && this.form.get('identification').invalid" color="danger">
+                  El número de identificación no es válido
+              </ion-text>
+              <ion-text *ngIf="this.form.get('identification').dirty && this.form.get('identification').valid" color="success">
+                  Correcto
+              </ion-text>
+          </ion-item>
+          <ion-item>
+              <ion-label position="floating">Teléfono</ion-label>
+              <ion-input formControlName="phone" type="number"></ion-input>
+              <ion-text *ngIf="this.form.get('phone').dirty && this.form.get('phone').invalid" color="danger">
+                  Teléfono no es válido
+              </ion-text>
+              <ion-text *ngIf="this.form.get('phone').dirty && this.form.get('phone').valid" color="success">
+                  Correcto
+              </ion-text>
+          </ion-item>
+          <ion-button expand="full" type="submit" [disabled]="form.invalid">REGISTRARSE</ion-button>
+      </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,71 @@
+<app-back-button title="Agregar Vehiculo"></app-back-button>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="form" (ngSubmit)="createVehicle()">
+    <ion-button color="warning" expand="full" shape="round" (click)="choosePicture()">
+      <ion-icon slot="start" name="camera"></ion-icon>
+      Seleccione una foto</ion-button>
+      <ion-item *ngFor="let image of images">
+        <ion-img class="img" [src]="image" alt=" Aún no ha subido una imagen, por favor cargue una imagen para continuar"></ion-img>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Placa</ion-label>
+        <ion-input type="text" formControlName="plate"></ion-input>
+        <ion-text *ngIf="this.form.get('plate').dirty && this.form.get('plate').invalid" color="danger">
+          Por favor ingrese una placa válida
+      </ion-text>
+      <ion-text *ngIf="this.form.get('plate').dirty && this.form.get('plate').valid" color="success">
+          Correcto
+      </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Año del Modelo</ion-label>
+        <ion-input type="number" formControlName="model"></ion-input>
+        <ion-text *ngIf="this.form.get('model').dirty && this.form.get('model').invalid" color="danger">
+          Por favor seleccione un modelo válido
+      </ion-text>
+      <ion-text *ngIf="this.form.get('model').dirty && this.form.get('model').valid" color="success">
+          Correcto
+      </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Tipo de Carrocería</ion-label>
+        <ion-select interface="action-sheet" formControlName="carBodywork" placeholder="Seleccione una Opción">
+          <ion-select-option value="furgon">Furgón</ion-select-option>
+          <ion-select-option value="volco">Volco</ion-select-option>
+          <ion-select-option value="tanque">Tanque</ion-select-option>
+          <ion-select-option value="estacas">Estacas</ion-select-option>
+          <ion-select-option value="porta contenedor">Porta Contenedor</ion-select-option>
+        </ion-select>
+        <ion-text *ngIf="this.form.get('carBodywork').dirty && this.form.get('carBodywork').invalid" color="danger">
+          Por favor seleccione una opción válida
+      </ion-text>
+      <ion-text *ngIf="this.form.get('carBodywork').dirty && this.form.get('carBodywork').valid" color="success">
+          Correcto
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Configuración</ion-label>
+      <ion-select interface="action-sheet" formControlName="configuration" placeholder="Seleccione una Opción">
+        <ion-select-option value="CA">CA</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="2S2">2S2</ion-select-option>
+        <ion-select-option value="2S3">2S3</ion-select-option>
+        <ion-select-option value="3S3">3S3</ion-select-option>
+      </ion-select>
+      <ion-text *ngIf="this.form.get('configuration').dirty && this.form.get('configuration').invalid" color="danger">
+        Por favor seleccione una opción válida
+    </ion-text>
+    <ion-text *ngIf="this.form.get('configuration').dirty && this.form.get('configuration').valid" color="success">
+        Correcto
+    </ion-text>
+
+    
+  </ion-item>
+      <ion-button type="submit" [disabled]="form.invalid" color="success" expand="full">CREAR VEHICULO</ion-button>
+  </form>
+</ion-content>
+

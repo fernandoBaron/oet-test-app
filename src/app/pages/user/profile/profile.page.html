@@ -1,0 +1,58 @@
+<app-header title="Mi Perfil"></app-header>
+
+
+<ion-content class="ion-padding" *ngIf="user" class="ion-padding">
+  <ion-card class="ion-padding" *ngIf="!user.documentFrontImage">
+    <ion-text color="danger">{{user.documentFrontImage}}
+      Tome la foto por el frente de su documento
+    </ion-text>
+    <ion-button (click)="frontPicture()" expand="full" shape="round" color="danger">
+      <ion-icon slot="start" name="camera"></ion-icon>
+     FOTO DE SU DOCUMENTO
+    </ion-button>
+</ion-card>
+<ion-card class="ion-padding" *ngIf="!user.documentBackImage">
+  <ion-text color="danger">
+    Tome la foto por el dorso de su documento
+  </ion-text>
+  <ion-button (click)="backPicture()" expand="full" shape="round" color="danger">
+    <ion-icon slot="start" name="camera"></ion-icon>
+   FOTO DE SU DOCUMENTO
+  </ion-button>
+</ion-card>
+  <ion-card class="ion-padding">
+    <ion-list >
+      <ion-item>
+        <ion-label>Nombres: </ion-label>
+         {{user.firstname | titlecase}}
+      </ion-item>
+      <ion-item>
+        <ion-label>Apellidos: </ion-label>
+        {{user.lastname | titlecase}}
+      </ion-item>
+      <ion-item>
+        <ion-label>Identificación: </ion-label>
+        {{user.identification | number}}
+      </ion-item>
+      <ion-item>
+        <ion-label>Tipo: </ion-label>
+        {{user.identificationType | titlecase}}
+      </ion-item>
+      <ion-item>
+        <ion-label>Teléfono: </ion-label>
+        {{user.phone }}
+      </ion-item>
+      <ion-item>
+        Correo Electrónico: {{user.email }}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+        <app-map [user]="user" *ngIf="user.longitude && user.latitude" ></app-map>
+  <ion-card>
+      <ion-button *ngIf="!user.latitude && !user.longitude" (click)="getGeolocation()" expand="full" shape="round" color="warning">
+       Obtener Mi Ubicación
+      </ion-button>
+  </ion-card>
+</ion-content>
+
+<app-footer></app-footer>

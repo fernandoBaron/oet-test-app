@@ -1,0 +1,48 @@
+<app-header title="Mis Vehiculos"></app-header>
+
+<ion-content class="ion-padding; ion-text-md-center">
+
+  <ion-item class="ion-padding; ion-text-center">
+    <ion-label color="primary">A continuación podrás<br>
+                                ver y crear tus Vehiculos.</ion-label>
+  </ion-item>
+
+
+<ion-card *ngIf="vehicles.length === 0" class="ion-padding">
+  <ion-list>
+    <ion-item >
+      <ion-label>No tienes vehiculos creados.</ion-label>
+      
+    </ion-item>
+    </ion-list>
+</ion-card>
+<ion-card *ngIf="vehicles.length > 0" class="ion-padding">
+  <ion-list *ngFor="let vehicle of vehicles">  
+      <ion-item>
+        <ion-label>Placa: </ion-label>
+        {{ vehicle.plate }}
+      </ion-item>
+      <ion-item>
+        <ion-label>Carrocería: </ion-label>
+        {{ vehicle.carBodywork | titlecase }}
+      </ion-item>
+      <ion-item>
+        <ion-label>Configuración: </ion-label>
+        {{ vehicle.configuration }}
+      </ion-item>
+      <ion-item>
+        <ion-label>Modelo: </ion-label>
+        {{ vehicle.model | number }}
+      </ion-item>
+      <ion-item >
+        <ion-img class="img" src="{{server}}{{vehicle.vehiclePicture}}"  style="max-width: 250px; max-height: 250px" alt="No hay imagen"></ion-img>
+      </ion-item> 
+      <ion-item>
+        <ion-icon slot="end" color="danger" name="trash-outline" (click)="remove(vehicle.id)"></ion-icon>
+      </ion-item>
+  </ion-list>
+</ion-card>
+<ion-button color="danger" expand="full" (click)="create()" class="ion-padding">CREAR VEHICULO</ion-button>
+</ion-content>
+
+<app-footer></app-footer>

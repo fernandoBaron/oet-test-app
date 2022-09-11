@@ -1,0 +1,13 @@
+<app-header title="Inicio"></app-header>
+
+  <ion-content class="ion-padding ion-text-center" *ngIf="user">
+    <ion-img src="assets/logo.jpg" style="width: 50%; margin: auto; margin-top: 20px"></ion-img>
+    <h3>Bienvenid@  </h3>
+    <h4 >{{user.firstname | titlecase }} {{user.lastname | titlecase }}</h4>
+     <ion-text color="primary">OET TEST</ion-text>
+        
+ 
+
+</ion-content>
+
+<app-footer></app-footer>
